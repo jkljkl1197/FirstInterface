@@ -122,7 +122,7 @@ namespace Interface_3fev
             {
                 select = listBox.SelectedIndex;
             }
-            for (int i = select; i < Fonction.Cpt - 1; i++)
+            for (int i = select; i < Fonction.Cpt; i++)
             {
                 Fonction.tblPersonnes[i] = Fonction.tblPersonnes[i + 1];
                 Fonction.tblPersonnes[i + 1] = null;

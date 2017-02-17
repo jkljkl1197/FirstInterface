@@ -38,3 +38,4 @@ P:\Prog\Interface_3fev\Interface_3fev\bin\Debug\ko\System.Windows.Interactivity.
 P:\Prog\Interface_3fev\Interface_3fev\bin\Debug\ru\System.Windows.Interactivity.resources.dll
 P:\Prog\Interface_3fev\Interface_3fev\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
 P:\Prog\Interface_3fev\Interface_3fev\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+P:\Prog\Interface_3fev\Interface_3fev\obj\Debug\Interface_3fev.csprojResolveAssemblyReference.cache
