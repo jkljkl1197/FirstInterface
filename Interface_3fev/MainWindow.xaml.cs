@@ -33,11 +33,6 @@ namespace Interface_3fev
             buttomTxt2Json.Visibility = Visibility.Hidden;
             buttomDebugSaveLoad.Visibility = Visibility.Hidden;
             Fonction.lireFichier();
-            Fonction.trierTableau(Order);
-            if (Order == 'A')
-                Ascendant.IsChecked = true;
-            else if (Order == 'D')
-                Descendant.IsChecked = true;
             transfererTableauDansListBox();
         }
 
@@ -140,13 +135,19 @@ namespace Interface_3fev
 
         private void Ascendant_Checked(object sender, RoutedEventArgs e)
         {
-            Fonction.trierTableau('A');
+            char Order = 'A';
+            Fonction.trierTableau(Order);
+            Ascendant.IsChecked = true;
+            Descendant.IsChecked = false;
             transfererTableauDansListBox();
         }
 
         private void Descendant_Checked(object sender, RoutedEventArgs e)
         {
-            Fonction.trierTableau('D');
+            char Order = 'D';
+            Fonction.trierTableau(Order);
+            Ascendant.IsChecked = false;
+            Descendant.IsChecked = true;
             transfererTableauDansListBox();
         }
 
