@@ -16,27 +16,53 @@ namespace Interface_3fev
         public static string nomFichier = @"../fichier.txt";
         public static int Cpt = 0;
 
-        public static void lireFichier() // lecture du fichier et remisage dans le tableau tab et compte dans cpt
+        public static string lireFichier(bool type = true, string SelectedFile = "") // lecture du fichier et remisage dans le tableau tab et compte dans cpt
         {
-            try
+            string texte = "";
+            if (type == true)
             {
-                JArray jArray = JArray.Parse(File.ReadAllText(@"..\save.json"));
-
-                for (int i = 0; i < jArray.ToArray().Length; i++)
+                try
                 {
-                    JToken jPersonne = jArray[i];
-                    string nom = (string)jPersonne["nom"];
-                    string prenom = (string)jPersonne["prenom"];
-                    double depense = (double)jPersonne["depense"];
+                    JArray jArray = JArray.Parse(File.ReadAllText(@"..\save.json"));
 
-                    Fonction.tblPersonnes[i] = new Personne(nom, prenom, depense);
-                    Cpt++;
+                    for (int i = 0; i < jArray.ToArray().Length; i++)
+                    {
+                        JToken jPersonne = jArray[i];
+                        string nom = (string)jPersonne["nom"];
+                        string prenom = (string)jPersonne["prenom"];
+                        double depense = (double)jPersonne["depense"];
+
+                        Fonction.tblPersonnes[i] = new Personne(nom, prenom, depense);
+                        Cpt++;
+                    }
+                }
+                catch
+                {
+
                 }
             }
-            catch
+            else
             {
-                
+                int CptTemp = 0;
+
+                try
+                {
+                    StreamReader sr = new StreamReader(SelectedFile);
+                    string line = sr.ReadLine();
+                    while (line != null)
+                    {
+                        texte += line + "\n";
+                        line = sr.ReadLine();
+                        CptTemp++;
+                    }
+                    sr.Close();
+                }
+                catch
+                {
+
+                }
             }
+            return texte;
         }
 
         public static string SelectFile(string defaultFileName = "Document", string defaultExt = ".txt", string filterExt = "Text documents (.txt)|*.txt")
