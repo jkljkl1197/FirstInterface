@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Interface_3fev"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="About" Height="900" Width="900">
+        Title="A Propos" Height="900" Width="900">
     <Grid>
         <WebBrowser x:Name="webBrowser" Source="https://jkljkl1197.github.io/FirstInterface/" Margin="10"/>
     </Grid>
