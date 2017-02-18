@@ -26,4 +26,3 @@ Features
 - Custom Icon in task bar
 
 -----------------
-0
