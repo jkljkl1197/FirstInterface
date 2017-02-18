@@ -26,3 +26,6 @@ Features
 - Custom Icon in task bar
 
 -----------------
+What's next?
+---
+- Change ListBox to a interface like a table to separe the data
