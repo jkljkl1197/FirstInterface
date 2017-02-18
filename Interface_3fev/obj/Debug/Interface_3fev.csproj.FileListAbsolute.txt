@@ -57,7 +57,6 @@ C:\Users\jorda\Source\Repos\FirstInterface\Interface_3fev\obj\Debug\Interface_3f
 C:\Users\jorda\Source\Repos\FirstInterface\Interface_3fev\obj\Debug\Interface_3fev.csproj.GenerateResource.Cache
 C:\Users\jorda\Source\Repos\FirstInterface\Interface_3fev\obj\Debug\Interface_3fev.exe
 C:\Users\jorda\Source\Repos\FirstInterface\Interface_3fev\obj\Debug\Interface_3fev.pdb
-C:\Users\jorda\Source\Repos\FirstInterface\Interface_3fev\obj\Debug\Interface_3fev.csprojResolveAssemblyReference.cache
 C:\Users\jorda\Source\Repos\FirstInterface\Interface_3fev\obj\Debug\About.g.cs
 C:\Users\jorda\Source\Repos\FirstInterface\Interface_3fev\obj\Debug\Interface_3fev_MarkupCompile.lref
 C:\Users\jorda\Source\Repos\FirstInterface\Interface_3fev\obj\Debug\About.baml
