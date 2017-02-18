@@ -27,6 +27,12 @@ namespace Interface_3fev
         public MainWindow()
         {
             InitializeComponent();
+            SolidColorBrush myBrush = (SolidColorBrush)this.TryFindResource("buttomMinimise");
+
+            if (myBrush != null)
+            {
+                myBrush.Color = Colors.Yellow;
+            }
             Fonction.lireFichier();
             transfererTableauDansListBox();
         }
