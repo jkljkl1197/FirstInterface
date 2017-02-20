@@ -60,3 +60,6 @@ C:\Users\jorda\Source\Repos\FirstInterface\Interface_3fev\obj\Debug\Interface_3f
 C:\Users\jorda\Source\Repos\FirstInterface\Interface_3fev\obj\Debug\About.g.cs
 C:\Users\jorda\Source\Repos\FirstInterface\Interface_3fev\obj\Debug\Interface_3fev_MarkupCompile.lref
 C:\Users\jorda\Source\Repos\FirstInterface\Interface_3fev\obj\Debug\About.baml
+P:\Prog\Interface_3fev\Interface_3fev\obj\Debug\About.g.cs
+P:\Prog\Interface_3fev\Interface_3fev\obj\Debug\Interface_3fev_MarkupCompile.lref
+P:\Prog\Interface_3fev\Interface_3fev\obj\Debug\About.baml
