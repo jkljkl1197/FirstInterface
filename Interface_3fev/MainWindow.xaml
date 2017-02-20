@@ -148,8 +148,8 @@
         <!--<Canvas x:Name="canvas">-->
         <TextBlock x:Name="labelDebug" TextWrapping="Wrap" Text="Visualisation/Edition" Foreground="#FFD84B51" Grid.Column="1" Margin="5,5,0,0" HorizontalAlignment="Left" Width="177" Visibility="Hidden"/>
         <Button x:Name="buttomExit" Style="{StaticResource Quitter}" Content="X" Click="Button_Quit_Click" ToolTip="Quitter" Background="#FFE74C3C" HorizontalAlignment="Right" MinHeight="21" MaxHeight="21" MaxWidth="60" Width="38" Grid.Column="1"/>
-        <Button x:Name="buttomMinimise" Style="{StaticResource Minimise}" Content="_" Click="Button_Minimise" ToolTip="Quitter" Background="#3498db" HorizontalAlignment="Right" MinHeight="21" MaxHeight="21" MaxWidth="60" Width="38" Margin="0,0,38,0" Grid.Column="1"/>
-        <Button x:Name="buttomSettings" Style="{StaticResource Settings}" Click="Button_Settings" ToolTip="Quitter" Background="#95a5a6" HorizontalAlignment="Right" MinHeight="21" MaxHeight="21" MaxWidth="60" Width="38" Margin="0,0,76,0" Grid.Column="1" Height="21" VerticalAlignment="Top">
+        <Button x:Name="buttomMinimise" Style="{StaticResource Minimise}" Content="_" Click="Button_Minimise" ToolTip="Minimiser" Background="#3498db" HorizontalAlignment="Right" MinHeight="21" MaxHeight="21" MaxWidth="60" Width="38" Margin="0,0,38,0" Grid.Column="1"/>
+        <Button x:Name="buttomSettings" Style="{StaticResource Settings}" Click="Button_Settings" ToolTip="A propos" Background="#95a5a6" HorizontalAlignment="Right" MinHeight="21" MaxHeight="21" MaxWidth="60" Width="38" Margin="0,0,76,0" Grid.Column="1" Height="21" VerticalAlignment="Top">
             <StackPanel>
                 <Image Source="settings.png" Stretch="Uniform" Height="20"></Image>
             </StackPanel>
