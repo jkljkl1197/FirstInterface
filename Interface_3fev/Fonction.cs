@@ -27,12 +27,33 @@ namespace Interface_3fev
 
                     for (int i = 0; i < jArray.ToArray().Length; i++)
                     {
+                        /*
+                             "nas": "Test",
+                             "nom": "Cote",
+                             "prenom": "Frederic",
+                             "dateDeNaissance": "Test1",
+                             "depense": 2360.0,
+                             "status": "Test2",
+                             "sexe": "Test3"
+                         */
                         JToken jPersonne = jArray[i];
+
+                        string nas = (string)jPersonne["nas"];
                         string nom = (string)jPersonne["nom"];
                         string prenom = (string)jPersonne["prenom"];
+                        string dateDeNaissance = (string)jPersonne["dateDeNaissance"];
                         double depense = (double)jPersonne["depense"];
+                        string status = (string)jPersonne["status"];
+                        string sexe = (string)jPersonne["sexe"];
 
-                        Fonction.tblPersonnes[i] = new Personne(nom, prenom, depense);
+                        if(nas != null && dateDeNaissance != null && status != null && sexe != null)
+                        {
+                            Fonction.tblPersonnes[i] = new Personne(nas, nom, prenom, dateDeNaissance, depense, status, sexe);
+                        }
+                        else
+                        {
+                            Fonction.tblPersonnes[i] = new Personne(nom, prenom, depense);
+                        }
                         Cpt++;
                     }
                 }
@@ -101,7 +122,14 @@ namespace Interface_3fev
                     if(CptTemp < 50)
                     {
                         string[] boiteASplit = line.Split(' ');
-                        tblPersonnesTemp[CptTemp] = new Personne(boiteASplit[0], boiteASplit[1], Convert.ToDouble(boiteASplit[2]));
+                        if(boiteASplit.Length == 3)
+                        {
+                            tblPersonnesTemp[CptTemp] = new Personne(boiteASplit[0], boiteASplit[1], Convert.ToDouble(boiteASplit[2]));
+                        }
+                        else if (boiteASplit.Length == 7)
+                        {
+                            tblPersonnesTemp[CptTemp] = new Personne(boiteASplit[3], boiteASplit[0], boiteASplit[1], boiteASplit[4], Convert.ToDouble(boiteASplit[2]), boiteASplit[5], boiteASplit[6]);
+                        }
                         line = sr.ReadLine();
                         CptTemp++;
                     }

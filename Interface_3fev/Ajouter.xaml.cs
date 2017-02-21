@@ -32,11 +32,22 @@ namespace Interface_3fev
         public int cpt1 = Fonction.Cpt;
         private void buttonAjouter_click(object sender, RoutedEventArgs e)
         {
-            string name = TextBoxNom.Text;
+            string nas = TextBoxNas.Text;
+            string nom = TextBoxNom.Text;
             string prenom = TextBoxPrenom.Text;
+            string dateDeNaissance = TextBoxDateDeNaissance.Text;
             double depense = Convert.ToDouble(TextBoxDepense.Text);
+            string status = TextBoxStatus.Text;
+            string sexe = TextBoxSexe.Text;
 
-            Fonction.tblPersonnes[cpt1] = new Personne(name, prenom, depense);
+            if (nas != null && dateDeNaissance != null && status != null && sexe != null)
+            {
+                Fonction.tblPersonnes[cpt1] = new Personne(nas, nom, prenom, dateDeNaissance, depense, status, sexe);
+            }
+            else
+            {
+                Fonction.tblPersonnes[cpt1] = new Personne(nom, prenom, depense);
+            }
             cpt1++;
             this.Close();
         }

@@ -127,7 +127,7 @@ namespace Interface_3fev
             listBox.Items.Clear();
             for (int i = 0; i < Fonction.Cpt; i++)
             {
-                listBox.Items.Add(Fonction.tblPersonnes[i].getNom() + " " + Fonction.tblPersonnes[i].getPrenom() + " " + Fonction.tblPersonnes[i].getDepense().ToString());
+                listBox.Items.Add(Fonction.tblPersonnes[i].getNas() + " " + Fonction.tblPersonnes[i].getNom() + " " + Fonction.tblPersonnes[i].getPrenom() + " " + Fonction.tblPersonnes[i].getDateNaissance() + " " + Fonction.tblPersonnes[i].getDepense().ToString() + " " + Fonction.tblPersonnes[i].getStatus() + " " + Fonction.tblPersonnes[i].getSexe());
             }
         }
 
