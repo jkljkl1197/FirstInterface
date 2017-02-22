@@ -8,13 +8,17 @@ namespace Interface_3fev
 {
     public class Personne
     {
+        public enum statusEnum { Celibataire, Marie, Veuf, Divorce };
+        public enum sexeEnum { Homme, Femme };
+
         public string nas { get; set; }
         public string nom { get; set; }
         public string prenom { get; set; }
         public string dateDeNaissance { get; set; }
         public double depense { get; set; }
-        public string status { get; set; }
-        public string sexe { get; set; }
+        public statusEnum? status { get; set; }
+        public sexeEnum? sexe { get; set; }
+
 
         #region Set/Get
         public void setNas(string nas)
@@ -37,11 +41,11 @@ namespace Interface_3fev
         {
             this.depense = depense;
         }
-        public void setStatus(string status)
+        public void setStatus(statusEnum? status)
         {
             this.status = status;
         }
-        public void setSexe(string sexe)
+        public void setSexe(sexeEnum? sexe)
         {
             this.sexe = sexe;
         }
@@ -68,11 +72,11 @@ namespace Interface_3fev
         }
         public string getStatus()
         {
-            return status;
+            return status.ToString();
         }
         public string getSexe()
         {
-            return sexe;
+            return sexe.ToString();
         }
         #endregion
 
@@ -84,7 +88,7 @@ namespace Interface_3fev
             setDepense(depense);
         }
 
-        public Personne(string nas, string nom, string prenom, string dateDeNaissance, double depense, string status, string sexe)
+        public Personne(string nas, string nom, string prenom, string dateDeNaissance, double depense, statusEnum? status, sexeEnum? sexe)
         {
             setNas(nas);
             setNom(nom);

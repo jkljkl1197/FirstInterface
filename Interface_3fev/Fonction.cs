@@ -7,6 +7,7 @@ using System.Xml;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using System.Globalization;
 
 namespace Interface_3fev
 {
@@ -46,13 +47,45 @@ namespace Interface_3fev
                         string status = (string)jPersonne["status"];
                         string sexe = (string)jPersonne["sexe"];
 
-                        if(nas != null && dateDeNaissance != null && status != null && sexe != null)
+                        Personne.statusEnum? statusEnum = null;
+                        Personne.sexeEnum? sexeEnum = null;
+
+                        if (status.Equals(Personne.statusEnum.Celibataire))
                         {
-                            Fonction.tblPersonnes[i] = new Personne(nas, nom, prenom, dateDeNaissance, depense, status, sexe);
+                            statusEnum = Personne.statusEnum.Celibataire;
                         }
-                        else
+                        else if (status.Equals(Personne.statusEnum.Marie))
                         {
-                            Fonction.tblPersonnes[i] = new Personne(nom, prenom, depense);
+                            statusEnum = Personne.statusEnum.Marie;
+                        }
+                        else if (status.Equals(Personne.statusEnum.Veuf))
+                        {
+                            statusEnum = Personne.statusEnum.Veuf;
+                        }
+                        else if (status.Equals(Personne.statusEnum.Divorce))
+                        {
+                            statusEnum = Personne.statusEnum.Divorce;
+                        }
+
+                        if (sexe.Equals(Personne.sexeEnum.Homme))
+                        {
+                            sexeEnum = Personne.sexeEnum.Homme;
+                        }
+                        else if (sexe.Equals(Personne.sexeEnum.Femme))
+                        {
+                            sexeEnum = Personne.sexeEnum.Femme;
+                        }
+
+                        if (nom != null && prenom != null)
+                        {
+                            if(nas != null && dateDeNaissance != null && status != null && sexe != null)
+                            {
+                                Fonction.tblPersonnes[i] = new Personne(nas, nom, prenom, dateDeNaissance, depense, statusEnum, sexeEnum);
+                            }
+                            else
+                            {
+                                Fonction.tblPersonnes[i] = new Personne(nom, prenom, depense);
+                            }
                         }
                         Cpt++;
                     }
@@ -122,13 +155,42 @@ namespace Interface_3fev
                     if(CptTemp < 50)
                     {
                         string[] boiteASplit = line.Split(' ');
-                        if(boiteASplit.Length == 3)
+                        if (boiteASplit.Length == 7)
+                        {
+                            Personne.statusEnum? statusEnum = null;
+                            Personne.sexeEnum? sexeEnum = null;
+
+                            if (boiteASplit[5].Equals(Personne.statusEnum.Celibataire))
+                            {
+                                statusEnum = Personne.statusEnum.Celibataire;
+                            }
+                            else if (boiteASplit[5].Equals(Personne.statusEnum.Marie))
+                            {
+                                statusEnum = Personne.statusEnum.Marie;
+                            }
+                            else if (boiteASplit[5].Equals(Personne.statusEnum.Veuf))
+                            {
+                                statusEnum = Personne.statusEnum.Veuf;
+                            }
+                            else if (boiteASplit[5].Equals(Personne.statusEnum.Divorce))
+                            {
+                                statusEnum = Personne.statusEnum.Divorce;
+                            }
+
+                            if (boiteASplit[6].Equals(Personne.sexeEnum.Homme))
+                            {
+                                sexeEnum = Personne.sexeEnum.Homme;
+                            }
+                            else if (boiteASplit[6].Equals(Personne.sexeEnum.Femme))
+                            {
+                                sexeEnum = Personne.sexeEnum.Femme;
+                            }
+
+                            tblPersonnesTemp[CptTemp] = new Personne(boiteASplit[3], boiteASplit[0], boiteASplit[1], boiteASplit[4], Convert.ToDouble(boiteASplit[2]), statusEnum, sexeEnum);
+                        }
+                        else if (boiteASplit.Length == 3)
                         {
                             tblPersonnesTemp[CptTemp] = new Personne(boiteASplit[0], boiteASplit[1], Convert.ToDouble(boiteASplit[2]));
-                        }
-                        else if (boiteASplit.Length == 7)
-                        {
-                            tblPersonnesTemp[CptTemp] = new Personne(boiteASplit[3], boiteASplit[0], boiteASplit[1], boiteASplit[4], Convert.ToDouble(boiteASplit[2]), boiteASplit[5], boiteASplit[6]);
                         }
                         line = sr.ReadLine();
                         CptTemp++;
@@ -147,6 +209,21 @@ namespace Interface_3fev
 
             System.IO.File.WriteAllText(@"..\save.json", Newtonsoft.Json.JsonConvert.SerializeObject(tblPersonnesTemp, Newtonsoft.Json.Formatting.Indented));
             lireFichier();
+        }
+
+        public static string RemoveDiacritics(String s)
+        {
+            String normalizedString = s.Normalize(NormalizationForm.FormD);
+            StringBuilder stringBuilder = new StringBuilder();
+
+            for (int i = 0; i < normalizedString.Length; i++)
+            {
+                Char c = normalizedString[i];
+                if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+                    stringBuilder.Append(c);
+            }
+
+            return stringBuilder.ToString();
         }
 
         public static string getJson()

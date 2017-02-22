@@ -32,21 +32,78 @@ namespace Interface_3fev
         public int cpt1 = Fonction.Cpt;
         private void buttonAjouter_click(object sender, RoutedEventArgs e)
         {
+
             string nas = TextBoxNas.Text;
             string nom = TextBoxNom.Text;
             string prenom = TextBoxPrenom.Text;
             string dateDeNaissance = TextBoxDateDeNaissance.Text;
             double depense = Convert.ToDouble(TextBoxDepense.Text);
-            string status = TextBoxStatus.Text;
-            string sexe = TextBoxSexe.Text;
+            string status = null;
+            string sexe = null;
+
+            if (Celibataire.IsChecked == true)
+            {
+                status = Fonction.RemoveDiacritics(Celibataire.Content.ToString());
+            }
+            else if (Marie.IsChecked == true)
+            {
+                status = Fonction.RemoveDiacritics(Marie.Content.ToString());
+            }
+            else if (Veuf.IsChecked == true)
+            {
+                status = Fonction.RemoveDiacritics(Veuf.Content.ToString());
+            }
+            else if (Divorce.IsChecked == true)
+            {
+                status = Fonction.RemoveDiacritics(Divorce.Content.ToString());
+            }
+
+            if (Homme.IsChecked == true)
+            {
+                sexe = Fonction.RemoveDiacritics(Homme.Content.ToString());
+            }
+            else if (Femme.IsChecked == true)
+            {
+                sexe = Fonction.RemoveDiacritics(Femme.Content.ToString());
+            }
+
+            if (nom != null && prenom != null)
+            {
+                Fonction.tblPersonnes[cpt1] = new Personne(nom, prenom, depense);
+            }
 
             if (nas != null && dateDeNaissance != null && status != null && sexe != null)
             {
-                Fonction.tblPersonnes[cpt1] = new Personne(nas, nom, prenom, dateDeNaissance, depense, status, sexe);
-            }
-            else
-            {
-                Fonction.tblPersonnes[cpt1] = new Personne(nom, prenom, depense);
+                Personne.statusEnum? statusEnum = null;
+                Personne.sexeEnum? sexeEnum = null;
+
+                if (status.Equals(Personne.statusEnum.Celibataire.ToString()))
+                {
+                    statusEnum = Personne.statusEnum.Celibataire;
+                }
+                else if (status.Equals(Personne.statusEnum.Marie.ToString()))
+                {
+                    statusEnum = Personne.statusEnum.Marie;
+                }
+                else if (status.Equals(Personne.statusEnum.Veuf.ToString()))
+                {
+                    statusEnum = Personne.statusEnum.Veuf;
+                }
+                else if (status.Equals(Personne.statusEnum.Divorce.ToString()))
+                {
+                    statusEnum = Personne.statusEnum.Divorce;
+                }
+
+                if (sexe.Equals(Personne.sexeEnum.Homme.ToString()))
+                {
+                    sexeEnum = Personne.sexeEnum.Homme;
+                }
+                else if (sexe.Equals(Personne.sexeEnum.Femme.ToString()))
+                {
+                    sexeEnum = Personne.sexeEnum.Femme;
+                }
+
+                Fonction.tblPersonnes[cpt1] = new Personne(nas, nom, prenom, dateDeNaissance, depense, statusEnum, sexeEnum);
             }
             cpt1++;
             this.Close();
