@@ -124,7 +124,6 @@ namespace Interface_3fev
                 if (P != null)
                     Fonction.Cpt++;
             }
-            MessageBox.Show(Convert.ToString(Fonction.Cpt));
             listBox.Items.Clear();
             for (int i = 0; i < Fonction.Cpt; i++)
             {

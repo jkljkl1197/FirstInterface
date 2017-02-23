@@ -50,28 +50,28 @@ namespace Interface_3fev
                         Personne.statusEnum? statusEnum = null;
                         Personne.sexeEnum? sexeEnum = null;
 
-                        if (status.Equals(Personne.statusEnum.Celibataire))
+                        if (status.Equals(Personne.statusEnum.Celibataire) || status == "0")
                         {
                             statusEnum = Personne.statusEnum.Celibataire;
                         }
-                        else if (status.Equals(Personne.statusEnum.Marie))
+                        else if (status.Equals(Personne.statusEnum.Marie) || status == "1")
                         {
                             statusEnum = Personne.statusEnum.Marie;
                         }
-                        else if (status.Equals(Personne.statusEnum.Veuf))
+                        else if (status.Equals(Personne.statusEnum.Veuf) || status == "2")
                         {
                             statusEnum = Personne.statusEnum.Veuf;
                         }
-                        else if (status.Equals(Personne.statusEnum.Divorce))
+                        else if (status.Equals(Personne.statusEnum.Divorce) || status == "3")
                         {
                             statusEnum = Personne.statusEnum.Divorce;
                         }
 
-                        if (sexe.Equals(Personne.sexeEnum.Homme))
+                        if (sexe.Equals(Personne.sexeEnum.Homme) || status == "0")
                         {
                             sexeEnum = Personne.sexeEnum.Homme;
                         }
-                        else if (sexe.Equals(Personne.sexeEnum.Femme))
+                        else if (sexe.Equals(Personne.sexeEnum.Femme) || status == "1")
                         {
                             sexeEnum = Personne.sexeEnum.Femme;
                         }
@@ -135,7 +135,6 @@ namespace Interface_3fev
             {
                 // Open document
                 selectedFileName = dlg.FileName;
-                //System.Windows.MessageBox.Show(selectedFileName);
             }
 
             return selectedFileName;
@@ -160,28 +159,28 @@ namespace Interface_3fev
                             Personne.statusEnum? statusEnum = null;
                             Personne.sexeEnum? sexeEnum = null;
 
-                            if (boiteASplit[5].Equals(Personne.statusEnum.Celibataire))
+                            if (boiteASplit[5].Equals(Personne.statusEnum.Celibataire) || boiteASplit[5] == "0")
                             {
                                 statusEnum = Personne.statusEnum.Celibataire;
                             }
-                            else if (boiteASplit[5].Equals(Personne.statusEnum.Marie))
+                            else if (boiteASplit[5].Equals(Personne.statusEnum.Marie) || boiteASplit[5] == "1")
                             {
                                 statusEnum = Personne.statusEnum.Marie;
                             }
-                            else if (boiteASplit[5].Equals(Personne.statusEnum.Veuf))
+                            else if (boiteASplit[5].Equals(Personne.statusEnum.Veuf) || boiteASplit[5] == "2")
                             {
                                 statusEnum = Personne.statusEnum.Veuf;
                             }
-                            else if (boiteASplit[5].Equals(Personne.statusEnum.Divorce))
+                            else if (boiteASplit[5].Equals(Personne.statusEnum.Divorce) || boiteASplit[5] == "3")
                             {
                                 statusEnum = Personne.statusEnum.Divorce;
                             }
 
-                            if (boiteASplit[6].Equals(Personne.sexeEnum.Homme))
+                            if (boiteASplit[6].Equals(Personne.sexeEnum.Homme) || boiteASplit[6] == "0")
                             {
                                 sexeEnum = Personne.sexeEnum.Homme;
                             }
-                            else if (boiteASplit[6].Equals(Personne.sexeEnum.Femme))
+                            else if (boiteASplit[6].Equals(Personne.sexeEnum.Femme) || boiteASplit[5] == "1")
                             {
                                 sexeEnum = Personne.sexeEnum.Femme;
                             }
