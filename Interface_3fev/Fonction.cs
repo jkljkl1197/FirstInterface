@@ -14,7 +14,6 @@ namespace Interface_3fev
     class Fonction
     {
         public static Personne[] tblPersonnes = new Personne[50];
-        public static string nomFichier = @"../fichier.txt";
         public static int Cpt = 0;
 
         public static string lireFichier(bool type = true, string SelectedFile = "") // lecture du fichier et remisage dans le tableau tab et compte dans cpt

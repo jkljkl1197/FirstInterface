@@ -35,6 +35,27 @@ namespace Interface_3fev
             }
             Fonction.lireFichier();
             transfererTableauDansListBox();
+
+            /*
+            Fonction.Cpt = 0;
+            foreach (Personne P in Fonction.tblPersonnes)
+            {
+                if (P != null)
+                    Fonction.Cpt++;
+            }
+            Fonction.Cpt = Fonction.Cpt - 1;
+
+            Personne[] tblTemp= new Personne[Fonction.Cpt];
+            for ( int i = 0; i < Fonction.Cpt; i++ )
+            {
+                if ( Fonction.tblPersonnes[i] != null )
+                {
+                    tblTemp[i] = Fonction.tblPersonnes[i];
+                }
+            }
+
+            dgUsers.ItemsSource = tblTemp;*/
+
         }
 
         #region Button
@@ -99,13 +120,21 @@ namespace Interface_3fev
             {
                 Ajouter subWindow = new Ajouter();
                 subWindow.ShowDialog();
+                transfererTableauDansListBox();
+                if ( Ascendant.IsChecked == true )
+                {
+                    Fonction.trierTableau('A');
+                }
+                if ( Descendant.IsChecked == true )
+                {
+                    Fonction.trierTableau('D');
+                }
+                transfererTableauDansListBox();
             }
             else
             {
                 MessageBox.Show("Impossible d'ajouter, car le logiciel est limiter a 50 items dans la liste.");
             }
-            Ascendant.IsChecked = false;
-            Descendant.IsChecked = false;
         }
 
         private void Button_Enregistrer_Click(object sender, RoutedEventArgs e)
@@ -115,7 +144,6 @@ namespace Interface_3fev
             Fonction.enregistrerTableauDansFichier();
         }
         #endregion
-
         public void transfererTableauDansListBox()
         {
             Fonction.Cpt = 0;
@@ -169,7 +197,7 @@ namespace Interface_3fev
         }
         #endregion
 
-        #region NormalButton
+        #region EssentialButton
         private void Button_Quit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();

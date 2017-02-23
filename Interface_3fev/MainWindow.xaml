@@ -8,7 +8,7 @@
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d" x:Class="Interface_3fev.MainWindow"
         ResizeMode="CanResizeWithGrip"
-        Title="Lister" Height="320" MinHeight="320" Width="515" MinWidth="515"
+        Title="Lister" Height="400" MinHeight="320" Width="650" MinWidth="515"
         Icon="Program-icon.ico">
     <Window.Resources>
         <Style x:Key="MyButtonStyle" TargetType="Button">
@@ -190,5 +190,6 @@
             <Button x:Name="buttomTxt2Json" Style="{DynamicResource MyButtonStyle}" Content="Convertir Txt en Json" Margin="0,4,10,26" Click="Button_Txt2Json_Click" Background="#2ecc71" BorderBrush="#FF27AE60" MinHeight="22" MaxHeight="22" Grid.Row="1" HorizontalAlignment="Right" Width="130" ToolTip="charge un fichier separer avec des espaces et le converti en Json au format aproprier pour ce programme et le save." Visibility="Hidden" Grid.ColumnSpan="2"/>
             <Button x:Name="buttomDebugSaveLoad" Style="{StaticResource MyButtonStyle}" Content="Enregistrer/Recharger" Margin="0,30,10,0" Click="Button_DebugSaveLoad_Click" Background="#2ecc71" BorderBrush="#FF27AE60" MinHeight="22" MaxHeight="22" Grid.Row="1" HorizontalAlignment="Right" Width="130" Visibility="Hidden" Grid.ColumnSpan="2"/>
         </Grid>
+        <!--<DataGrid x:Name="dgUsers" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="217" Width="306" Grid.Column="1"/>-->
     </Grid>
 </Window>

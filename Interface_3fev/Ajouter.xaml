@@ -14,10 +14,9 @@
         <TextBox x:Name="TextBoxNom" HorizontalAlignment="Left" Height="23" Margin="146,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="Annuler" Content="Annuler" Margin="0,0,10,12" Click="buttonAnnuler_click" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75"/>
         <Button x:Name="ButtonAjouter" Content="Ajouter" HorizontalAlignment="Left" Margin="10,0,0,12" Width="75" Click="buttonAjouter_click" Height="22" VerticalAlignment="Bottom"/>
-        <TextBox x:Name="TextBoxNas" HorizontalAlignment="Left" Height="23" Margin="146,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TextBoxNas" HorizontalAlignment="Left" Height="23" Margin="146,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" ToolTip="Ex: XXX XXX XXX ou XXXXXXXXX"/>
         <Label x:Name="Nas" Content="Nas :" HorizontalAlignment="Left" Margin="33,152,0,0" VerticalAlignment="Top"/>
         <Label x:Name="DateDeNaissance" Content="Date de naissance :" HorizontalAlignment="Left" Margin="33,183,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxDateDeNaissance" HorizontalAlignment="Left" Height="23" Margin="146,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <GroupBox x:Name="Status" Header="Status" HorizontalAlignment="Left" Margin="291,35,0,0" VerticalAlignment="Top" Height="114" Width="166">
             <Grid Margin="0,0,-2,-2">
                 <RadioButton x:Name="Celibataire" Content="Célibataire" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
@@ -32,6 +31,16 @@
                 <RadioButton x:Name="Femme" Content="Femme" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
+        <DatePicker x:Name="DatePickerDateDeNaissance" HorizontalAlignment="Left" Margin="140,185,0,0" VerticalAlignment="Top" Width="151" RenderTransformOrigin="0.5,0.5">
+            <DatePicker.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.076"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </DatePicker.RenderTransform>
+        </DatePicker>
 
     </Grid>
 </Window>

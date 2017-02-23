@@ -32,15 +32,60 @@ namespace Interface_3fev
         public int cpt1 = Fonction.Cpt;
         private void buttonAjouter_click(object sender, RoutedEventArgs e)
         {
+            bool error = false;
+            bool lastError = false;
+            string message = "";
 
             string nas = TextBoxNas.Text;
             string nom = TextBoxNom.Text;
             string prenom = TextBoxPrenom.Text;
-            string dateDeNaissance = TextBoxDateDeNaissance.Text;
-            double depense = Convert.ToDouble(TextBoxDepense.Text);
+            double? depense = ValidType.doubleValide(TextBoxDepense.Text);
             string status = null;
             string sexe = null;
+            DateTime now = DateTime.Now;
+            Personne.statusEnum? statusEnum = null;
+            Personne.sexeEnum? sexeEnum = null;
 
+            string dateDeNaissance = "";
+            string[] splitDate = {"0" ,"0" , "0"};
+            try
+            {
+                dateDeNaissance = DatePickerDateDeNaissance.SelectedDate.Value.Date.ToShortDateString();
+                splitDate = dateDeNaissance.Split('-');
+            }
+            catch { }
+
+            {
+
+            if (Validation.dateValide(splitDate[2], splitDate[1], splitDate[0], (now.Year - 120), (now.Year), 2) == "0")
+            {
+                message += "Date Invalide, ";
+                error = true;
+            }
+            else { error = false; }
+
+            if (nom.Any(char.IsDigit) || prenom.Any(char.IsDigit) || nom == "" || prenom == "")
+            {
+                message += "Nom ou Prenom Invalide, ";
+                error = true;
+            }
+            else { error = false; }
+
+            if (depense == null)
+            {
+                message += "Depense Invalide, ";
+                error = true;
+            }
+            else { error = false; }
+
+            if (Validation.nasValide(nas) == null)
+            {
+                message += "Nas Invalide, ";
+                error = true;
+            }
+            else { error = false; }
+
+            
             if (Celibataire.IsChecked == true)
             {
                 status = Fonction.RemoveDiacritics(Celibataire.Content.ToString());
@@ -67,46 +112,57 @@ namespace Interface_3fev
                 sexe = Fonction.RemoveDiacritics(Femme.Content.ToString());
             }
 
-            if (nom != null && prenom != null)
+                if (status != null && sexe != null) 
+                {
+                    if (status.Equals(Personne.statusEnum.Celibataire.ToString()))
+                    {
+                        statusEnum = Personne.statusEnum.Celibataire;
+                    }
+                    else if (status.Equals(Personne.statusEnum.Marie.ToString()))
+                    {
+                        statusEnum = Personne.statusEnum.Marie;
+                    }
+                    else if (status.Equals(Personne.statusEnum.Veuf.ToString()))
+                    {
+                        statusEnum = Personne.statusEnum.Veuf;
+                    }
+                    else if (status.Equals(Personne.statusEnum.Divorce.ToString()))
+                    {
+                        statusEnum = Personne.statusEnum.Divorce;
+                    }
+
+                    if (sexe.Equals(Personne.sexeEnum.Homme.ToString()))
+                    {
+                        sexeEnum = Personne.sexeEnum.Homme;
+                    }
+                    else if (sexe.Equals(Personne.sexeEnum.Femme.ToString()))
+                    {
+                        sexeEnum = Personne.sexeEnum.Femme;
+                    }
+                }
+                else
+                {
+                    message += "Auccun status ou sexe selectionné.";
+                    error = true;
+                }
+
+                if (error == true)
+                {
+                    MessageBoxResult result = MessageBox.Show("" + message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    if (result == MessageBoxResult.OK)
+                    {
+                        lastError = true;
+                        error = false;
+                    }
+                }
+            } while (error == true);
+            error = false;
+            if (lastError == false)
             {
-                Fonction.tblPersonnes[cpt1] = new Personne(nom, prenom, depense);
-            }
-
-            if (nas != null && dateDeNaissance != null && status != null && sexe != null)
-            {
-                Personne.statusEnum? statusEnum = null;
-                Personne.sexeEnum? sexeEnum = null;
-
-                if (status.Equals(Personne.statusEnum.Celibataire.ToString()))
-                {
-                    statusEnum = Personne.statusEnum.Celibataire;
-                }
-                else if (status.Equals(Personne.statusEnum.Marie.ToString()))
-                {
-                    statusEnum = Personne.statusEnum.Marie;
-                }
-                else if (status.Equals(Personne.statusEnum.Veuf.ToString()))
-                {
-                    statusEnum = Personne.statusEnum.Veuf;
-                }
-                else if (status.Equals(Personne.statusEnum.Divorce.ToString()))
-                {
-                    statusEnum = Personne.statusEnum.Divorce;
-                }
-
-                if (sexe.Equals(Personne.sexeEnum.Homme.ToString()))
-                {
-                    sexeEnum = Personne.sexeEnum.Homme;
-                }
-                else if (sexe.Equals(Personne.sexeEnum.Femme.ToString()))
-                {
-                    sexeEnum = Personne.sexeEnum.Femme;
-                }
-
                 Fonction.tblPersonnes[cpt1] = new Personne(nas, nom, prenom, dateDeNaissance, depense, statusEnum, sexeEnum);
+                cpt1++;
+                this.Close();
             }
-            cpt1++;
-            this.Close();
-        }
+      }
     }
 }

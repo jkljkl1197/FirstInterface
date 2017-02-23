@@ -15,7 +15,7 @@ namespace Interface_3fev
         public string nom { get; set; }
         public string prenom { get; set; }
         public string dateDeNaissance { get; set; }
-        public double depense { get; set; }
+        public double? depense { get; set; }
         public statusEnum? status { get; set; }
         public sexeEnum? sexe { get; set; }
 
@@ -37,7 +37,7 @@ namespace Interface_3fev
         {
             this.dateDeNaissance = dateDeNaissance;
         }
-        public void setDepense(double depense)
+        public void setDepense(double? depense)
         {
             this.depense = depense;
         }
@@ -66,7 +66,7 @@ namespace Interface_3fev
         {
             return dateDeNaissance;
         }
-        public double getDepense()
+        public double? getDepense()
         {
             return depense;
         }
@@ -81,14 +81,14 @@ namespace Interface_3fev
         #endregion
 
         #region Fonction/Constructeur
-        public Personne(string nom, string prenom, double depense)
+        public Personne(string nom, string prenom, double? depense)
         {
             setNom(nom);
             setPrenom(prenom);
             setDepense(depense);
         }
 
-        public Personne(string nas, string nom, string prenom, string dateDeNaissance, double depense, statusEnum? status, sexeEnum? sexe)
+        public Personne(string nas, string nom, string prenom, string dateDeNaissance, double? depense, statusEnum? status, sexeEnum? sexe)
         {
             setNas(nas);
             setNom(nom);

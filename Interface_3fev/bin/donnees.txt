@@ -1,36 +1,36 @@
 Cote Frederic 2360 Test Test1 0 0
-Lavoie Celine 5627
-Bergeron Francis 1229
-Dumais Arnaud 3268
-Emond Maxime 7560
-Noel Paolo 2588
-Plourde Raphael 1250
-Poitras Bobby 5216
-Gagnon Morgan 1234
-Gelinas Herve 6548
-Nibo Forundel 3256
-Tremblay Maxime 5000
-Tremblay Julie 9000
-Gauthier Antoine 7564
-Brisson Celine 6523
-Page Ann-Chloe 8975
-Gauthier Jonathan 5467
-Young Roger 5000
-Simard Mathieu 4700
-Hilton Alex 3250
-Lacroix Sebastien 6550
-Gelinas Timothe 4350
-Caron Marc-Andre 2650
-Deschenes Renald 3000
-Blais Mathieu 2500
-Chamberland Pauline 3500
-Gaudreault Stephanie 1500
-Tremblay Dany 1600
-Gauthier Jeanne-Mance 2556
-Tremblay Michael 1500
-Hudon Pierre 1000
-Boivin Louise 6000
-Regis Roger 5400
-Lavoie Francis 8000
-Gagnon Jean 4300
-Rubio Ricky 1200
+Lavoie Celine 5627 Test Test1 0 0
+Bergeron Francis 1229 Test Test1 0 0
+Dumais Arnaud 3268 Test Test1 0 0
+Emond Maxime 7560 Test Test1 0 0
+Noel Paolo 2588 Test Test1 0 0
+Plourde Raphael 1250 Test Test1 0 0
+Poitras Bobby 5216 Test Test1 0 0
+Gagnon Morgan 1234 Test Test1 0 0
+Gelinas Herve 6548 Test Test1 0 0
+Nibo Forundel 3256 Test Test1 0 0
+Tremblay Maxime 5000 Test Test1 0 0
+Tremblay Julie 9000 Test Test1 0 0
+Gauthier Antoine 7564 Test Test1 0 0
+Brisson Celine 6523 Test Test1 0 0
+Page Ann-Chloe 8975 Test Test1 0 0
+Gauthier Jonathan 5467 Test Test1 0 0
+Young Roger 5000 Test Test1 0 0
+Simard Mathieu 4700 Test Test1 0 0
+Hilton Alex 3250 Test Test1 0 0
+Lacroix Sebastien 6550 Test Test1 0 0
+Gelinas Timothe 4350 Test Test1 0 0
+Caron Marc-Andre 2650 Test Test1 0 0
+Deschenes Renald 3000 Test Test1 0 0
+Blais Mathieu 2500 Test Test1 0 0
+Chamberland Pauline 3500 Test Test1 0 0
+Gaudreault Stephanie 1500 Test Test1 0 0
+Tremblay Dany 1600 Test Test1 0 0
+Gauthier Jeanne-Mance 2556 Test Test1 0 0
+Tremblay Michael 1500 Test Test1 0 0
+Hudon Pierre 1000 Test Test1 0 0
+Boivin Louise 6000 Test Test1 0 0
+Regis Roger 5400 Test Test1 0 0
+Lavoie Francis 8000 Test Test1 0 0
+Gagnon Jean 4300 Test Test1 0 0
+Rubio Ricky 1200 Test Test1 0 0
