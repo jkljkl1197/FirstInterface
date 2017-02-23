@@ -1,20 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.IO;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
 
 namespace Interface_3fev
 {
@@ -36,26 +23,6 @@ namespace Interface_3fev
             Fonction.lireFichier();
             transfererTableauDansListBox();
 
-            /*
-            Fonction.Cpt = 0;
-            foreach (Personne P in Fonction.tblPersonnes)
-            {
-                if (P != null)
-                    Fonction.Cpt++;
-            }
-            Fonction.Cpt = Fonction.Cpt - 1;
-
-            Personne[] tblTemp= new Personne[Fonction.Cpt];
-            for ( int i = 0; i < Fonction.Cpt; i++ )
-            {
-                if ( Fonction.tblPersonnes[i] != null )
-                {
-                    tblTemp[i] = Fonction.tblPersonnes[i];
-                }
-            }
-
-            dgUsers.ItemsSource = tblTemp;*/
-
         }
 
         #region Button
@@ -71,10 +38,10 @@ namespace Interface_3fev
         private void Button_Enlever_click(object sender, RoutedEventArgs e)
         {
             int select;
-            if (listBox.SelectedIndex == -1)
+            if (dgUsers.SelectedIndex == -1)
                 select = 0;
             else
-                select = listBox.SelectedIndex;
+                select = dgUsers.SelectedIndex;
 
             for (int i = select; i < Fonction.Cpt; i++)
             {
@@ -146,17 +113,36 @@ namespace Interface_3fev
         #endregion
         public void transfererTableauDansListBox()
         {
+            /*Fonction.Cpt = 0;
+            foreach (Personne P in Fonction.tblPersonnes)
+            {
+                if (P != null)
+                    Fonction.Cpt++;
+            }
+            dgUsers.Items.Clear();
+            for (int i = 0; i < Fonction.Cpt; i++)
+            {
+                dgUsers.Items.Add(Fonction.tblPersonnes[i].getNas() + " " + Fonction.tblPersonnes[i].getNom() + " " + Fonction.tblPersonnes[i].getPrenom() + " " + Fonction.tblPersonnes[i].getDateNaissance() + " " + Fonction.tblPersonnes[i].getDepense().ToString() + " " + Fonction.tblPersonnes[i].getStatus() + " " + Fonction.tblPersonnes[i].getSexe());
+            }*/
+
             Fonction.Cpt = 0;
             foreach (Personne P in Fonction.tblPersonnes)
             {
                 if (P != null)
                     Fonction.Cpt++;
             }
-            listBox.Items.Clear();
+            Fonction.Cpt = Fonction.Cpt - 1;
+
+            Personne[] tblTemp = new Personne[Fonction.Cpt];
             for (int i = 0; i < Fonction.Cpt; i++)
             {
-                listBox.Items.Add(Fonction.tblPersonnes[i].getNas() + " " + Fonction.tblPersonnes[i].getNom() + " " + Fonction.tblPersonnes[i].getPrenom() + " " + Fonction.tblPersonnes[i].getDateNaissance() + " " + Fonction.tblPersonnes[i].getDepense().ToString() + " " + Fonction.tblPersonnes[i].getStatus() + " " + Fonction.tblPersonnes[i].getSexe());
+                if (Fonction.tblPersonnes[i] != null)
+                {
+                    tblTemp[i] = Fonction.tblPersonnes[i];
+                }
             }
+
+            dgUsers.ItemsSource = tblTemp;
         }
 
         private void Ascendant_Checked(object sender, RoutedEventArgs e)

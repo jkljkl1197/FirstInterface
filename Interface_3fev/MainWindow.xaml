@@ -143,7 +143,8 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock HorizontalAlignment="Left" Margin="10,5,0,0" TextWrapping="Wrap" Text="Éditeur de Liste" VerticalAlignment="Top" Width="224" Foreground="#FFD85252" Height="16"/>
-        <ListBox x:Name="listBox" Margin="10" Background="#FFBDC3C7" Grid.Row="1"/>
+        <!--<ListBox x:Name="listBox" Margin="10" Background="#FFBDC3C7" Grid.Row="1"/>-->
+        <DataGrid x:Name="dgUsers" HorizontalAlignment="Left" Margin="10" Grid.Row="1" VerticalAlignment="Top" Height="Auto" Width="Auto"/>
 
         <!--<Canvas x:Name="canvas">-->
         <TextBlock x:Name="labelDebug" TextWrapping="Wrap" Text="Visualisation/Edition" Foreground="#FFD84B51" Grid.Column="1" Margin="5,5,0,0" HorizontalAlignment="Left" Width="177" Visibility="Hidden"/>
@@ -190,6 +191,5 @@
             <Button x:Name="buttomTxt2Json" Style="{DynamicResource MyButtonStyle}" Content="Convertir Txt en Json" Margin="0,4,10,26" Click="Button_Txt2Json_Click" Background="#2ecc71" BorderBrush="#FF27AE60" MinHeight="22" MaxHeight="22" Grid.Row="1" HorizontalAlignment="Right" Width="130" ToolTip="charge un fichier separer avec des espaces et le converti en Json au format aproprier pour ce programme et le save." Visibility="Hidden" Grid.ColumnSpan="2"/>
             <Button x:Name="buttomDebugSaveLoad" Style="{StaticResource MyButtonStyle}" Content="Enregistrer/Recharger" Margin="0,30,10,0" Click="Button_DebugSaveLoad_Click" Background="#2ecc71" BorderBrush="#FF27AE60" MinHeight="22" MaxHeight="22" Grid.Row="1" HorizontalAlignment="Right" Width="130" Visibility="Hidden" Grid.ColumnSpan="2"/>
         </Grid>
-        <!--<DataGrid x:Name="dgUsers" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="217" Width="306" Grid.Column="1"/>-->
     </Grid>
 </Window>
