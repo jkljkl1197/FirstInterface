@@ -11,72 +11,72 @@ namespace Interface_3fev
         public enum statusEnum { Celibataire, Marie, Veuf, Divorce };
         public enum sexeEnum { Homme, Femme };
 
-        public string nas { get; set; }
-        public string nom { get; set; }
-        public string prenom { get; set; }
-        public string dateDeNaissance { get; set; }
-        public double? depense { get; set; }
-        public statusEnum? status { get; set; }
-        public sexeEnum? sexe { get; set; }
+        public string Nas { get; set; }
+        public string Nom { get; set; }
+        public string Prenom { get; set; }
+        public string DateDeNaissance { get; set; }
+        public double? Depense { get; set; }
+        public statusEnum? Status { get; set; }
+        public sexeEnum? Sexe { get; set; }
 
 
         #region Set/Get
         public void setNas(string nas)
         {
-            this.nas = nas;
+            this.Nas = nas;
         }
         public void setNom(string nom)
         {
-            this.nom = nom;
+            this.Nom = nom;
         }
         public void setPrenom(string prenom)
         {
-            this.prenom = prenom;
+            this.Prenom = prenom;
         }
         public void setDateDeNaissance(string dateDeNaissance)
         {
-            this.dateDeNaissance = dateDeNaissance;
+            this.DateDeNaissance = dateDeNaissance;
         }
         public void setDepense(double? depense)
         {
-            this.depense = depense;
+            this.Depense = depense;
         }
         public void setStatus(statusEnum? status)
         {
-            this.status = status;
+            this.Status = status;
         }
         public void setSexe(sexeEnum? sexe)
         {
-            this.sexe = sexe;
+            this.Sexe = sexe;
         }
 
         public string getNas()
         {
-            return nas;
+            return Nas;
         }
         public string getNom()
         {
-            return nom;
+            return Nom;
         }
         public string getPrenom()
         {
-            return prenom;
+            return Prenom;
         }
         public string getDateNaissance()
         {
-            return dateDeNaissance;
+            return DateDeNaissance;
         }
         public double? getDepense()
         {
-            return depense;
+            return Depense;
         }
         public string getStatus()
         {
-            return status.ToString();
+            return Status.ToString();
         }
         public string getSexe()
         {
-            return sexe.ToString();
+            return Sexe.ToString();
         }
         #endregion
 

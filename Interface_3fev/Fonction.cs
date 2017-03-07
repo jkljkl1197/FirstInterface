@@ -16,35 +16,24 @@ namespace Interface_3fev
         public static Personne[] tblPersonnes = new Personne[50];
         public static int Cpt = 0;
 
-        public static string lireFichier(bool type = true, string SelectedFile = "") // lecture du fichier et remisage dans le tableau tab et compte dans cpt
+        public static string lireFichier(string SelectedFile = @"..\save.json") // lecture du fichier et remisage dans le tableau tab et compte dans cpt
         {
             string texte = "";
-            if (type == true)
-            {
                 try
                 {
-                    JArray jArray = JArray.Parse(File.ReadAllText(@"..\save.json"));
+                    JArray jArray = JArray.Parse(File.ReadAllText(SelectedFile));
 
                     for (int i = 0; i < jArray.ToArray().Length; i++)
                     {
-                        /*
-                             "nas": "Test",
-                             "nom": "Cote",
-                             "prenom": "Frederic",
-                             "dateDeNaissance": "Test1",
-                             "depense": 2360.0,
-                             "status": "Test2",
-                             "sexe": "Test3"
-                         */
                         JToken jPersonne = jArray[i];
 
-                        string nas = (string)jPersonne["nas"];
-                        string nom = (string)jPersonne["nom"];
-                        string prenom = (string)jPersonne["prenom"];
-                        string dateDeNaissance = (string)jPersonne["dateDeNaissance"];
-                        double depense = (double)jPersonne["depense"];
-                        string status = (string)jPersonne["status"];
-                        string sexe = (string)jPersonne["sexe"];
+                        string nas = (string)jPersonne["Nas"];
+                        string nom = (string)jPersonne["Nom"];
+                        string prenom = (string)jPersonne["Prenom"];
+                        string dateDeNaissance = (string)jPersonne["DateDeNaissance"];
+                        double depense = (double)jPersonne["Depense"];
+                        string status = (string)jPersonne["Status"];
+                        string sexe = (string)jPersonne["Sexe"];
 
                         Personne.statusEnum? statusEnum = null;
                         Personne.sexeEnum? sexeEnum = null;
@@ -93,36 +82,19 @@ namespace Interface_3fev
                 {
 
                 }
-            }
-            else
-            {
-                int CptTemp = 0;
-
-                try
-                {
-                    StreamReader sr = new StreamReader(SelectedFile);
-                    string line = sr.ReadLine();
-                    while (line != null)
-                    {
-                        texte += line + "\n";
-                        line = sr.ReadLine();
-                        CptTemp++;
-                    }
-                    sr.Close();
-                }
-                catch
-                {
-
-                }
-            }
             return texte;
         }
 
-        public static string SelectFile(string defaultFileName = "Document", string defaultExt = ".txt", string filterExt = "Text documents (.txt)|*.txt")
+        public static string SelectFile(string defaultFileName = "Document", string defaultExt = ".txt", string filterExt = "Text documents (.txt)|*.txt", string InitialDirectory = null)
         {
-            string selectedFileName = "";
+            string selectedFileName = null;
 
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            if (InitialDirectory == null)
+            {
+                InitialDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
+            }
+            dlg.InitialDirectory = InitialDirectory;
             dlg.FileName = defaultFileName; // Default file name
             dlg.DefaultExt = defaultExt; // Default file extension
             dlg.Filter = filterExt; // Filter files by extension
@@ -133,6 +105,32 @@ namespace Interface_3fev
             if (result == true)
             {
                 // Open document
+                selectedFileName = dlg.FileName;
+            }
+
+            return selectedFileName;
+        }
+
+        public static string SaveFile(string defaultFileName = "Document", string defaultExt = ".txt", string filterExt = "Text documents (.txt)|*.txt", string InitialDirectory = null)
+        {
+            string selectedFileName = null;
+            
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+            if (InitialDirectory == null)
+            {
+                InitialDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
+            }
+            dlg.InitialDirectory = InitialDirectory;
+            dlg.FileName = defaultFileName; // Default file name
+            dlg.DefaultExt = defaultExt; // Default file extension
+            dlg.Filter = filterExt; // Filter files by extension
+
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Process open file dialog box results
+            if (result == true)
+            {
+                // Save document
                 selectedFileName = dlg.FileName;
             }
 
@@ -197,6 +195,8 @@ namespace Interface_3fev
                     {
                         System.Windows.MessageBox.Show("Il y a plus de 50 ligne dans le fichier [Limite du tableau depasser].");
                     }
+
+                    tblPersonnes = tblPersonnesTemp;
                 }
                 sr.Close();
             }
@@ -204,9 +204,6 @@ namespace Interface_3fev
             {
 
             }
-
-            System.IO.File.WriteAllText(@"..\save.json", Newtonsoft.Json.JsonConvert.SerializeObject(tblPersonnesTemp, Newtonsoft.Json.Formatting.Indented));
-            lireFichier();
         }
 
         public static string RemoveDiacritics(String s)
@@ -260,10 +257,10 @@ namespace Interface_3fev
             while (!tableauEnOrdre);
         }
 
-        public static void enregistrerTableauDansFichier()
+        public static void enregistrerTableauDansFichier(string selectSave = @"..\save.json")
         {
 
-            System.IO.File.WriteAllText(@"..\save.json", Fonction.getJson());
+            System.IO.File.WriteAllText(selectSave, Fonction.getJson());
 
         }
     }

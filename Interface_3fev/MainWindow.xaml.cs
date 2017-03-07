@@ -59,7 +59,7 @@ namespace Interface_3fev
             if (visible == false)
             {
                 texteboxDebug.Visibility = Visibility.Visible;
-                buttomTxt2Json.Visibility = Visibility.Visible;
+                //buttomTxt2Json.Visibility = Visibility.Visible;
                 labelDebug.Visibility = Visibility.Visible;
                 buttomDebugSaveLoad.Visibility = Visibility.Visible;
                 visible = true;
@@ -67,7 +67,7 @@ namespace Interface_3fev
             else
             {
                 texteboxDebug.Visibility = Visibility.Hidden;
-                buttomTxt2Json.Visibility = Visibility.Hidden;
+                //buttomTxt2Json.Visibility = Visibility.Hidden;
                 labelDebug.Visibility = Visibility.Hidden;
                 buttomDebugSaveLoad.Visibility = Visibility.Hidden;
                 visible = false;
@@ -111,27 +111,15 @@ namespace Interface_3fev
             Fonction.enregistrerTableauDansFichier();
         }
         #endregion
+
         public void transfererTableauDansListBox()
         {
-            /*Fonction.Cpt = 0;
-            foreach (Personne P in Fonction.tblPersonnes)
-            {
-                if (P != null)
-                    Fonction.Cpt++;
-            }
-            dgUsers.Items.Clear();
-            for (int i = 0; i < Fonction.Cpt; i++)
-            {
-                dgUsers.Items.Add(Fonction.tblPersonnes[i].getNas() + " " + Fonction.tblPersonnes[i].getNom() + " " + Fonction.tblPersonnes[i].getPrenom() + " " + Fonction.tblPersonnes[i].getDateNaissance() + " " + Fonction.tblPersonnes[i].getDepense().ToString() + " " + Fonction.tblPersonnes[i].getStatus() + " " + Fonction.tblPersonnes[i].getSexe());
-            }*/
-
             Fonction.Cpt = 0;
             foreach (Personne P in Fonction.tblPersonnes)
             {
                 if (P != null)
                     Fonction.Cpt++;
             }
-            Fonction.Cpt = Fonction.Cpt - 1;
 
             Personne[] tblTemp = new Personne[Fonction.Cpt];
             for (int i = 0; i < Fonction.Cpt; i++)
@@ -141,7 +129,6 @@ namespace Interface_3fev
                     tblTemp[i] = Fonction.tblPersonnes[i];
                 }
             }
-
             dgUsers.ItemsSource = tblTemp;
         }
 
@@ -164,13 +151,13 @@ namespace Interface_3fev
         }
 
         #region HiddenButton
-        private void Button_Txt2Json_Click(object sender, RoutedEventArgs e)
+        /*private void Button_Txt2Json_Click(object sender, RoutedEventArgs e)
         {
             Fonction.refreshTbl2Null();
             Fonction.ConvertTxtToJson(Fonction.SelectFile("donnees.txt"));
             Ascendant.IsChecked = false;
             Descendant.IsChecked = false;
-        }
+        }*/
 
         private void Button_DebugSaveLoad_Click(object sender, RoutedEventArgs e)
         {
@@ -186,6 +173,10 @@ namespace Interface_3fev
         #region EssentialButton
         private void Button_Quit_Click(object sender, RoutedEventArgs e)
         {
+            if (CheckBoxSaveOnExit.IsChecked == true)
+            {
+                Fonction.enregistrerTableauDansFichier();
+            }
             Application.Current.Shutdown();
         }
 
@@ -204,6 +195,40 @@ namespace Interface_3fev
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
+        }
+        #endregion
+
+        #region Menu
+        private void MenuOpenFile_Click(object sender, RoutedEventArgs e)
+        {
+            string file = Fonction.SelectFile("save", ".json", "Documents (.json;.txt)|*.json;*.txt");
+            if (file != null)
+            {
+                if(file.Contains(".json"))
+                {
+                    Fonction.lireFichier(file);
+                    transfererTableauDansListBox();
+                    Ascendant.IsChecked = false;
+                    Descendant.IsChecked = false;
+                }
+                else if (file.Contains(".txt"))
+                {
+                    Fonction.refreshTbl2Null();
+                    Fonction.ConvertTxtToJson(file);
+                    transfererTableauDansListBox();
+                    Ascendant.IsChecked = false;
+                    Descendant.IsChecked = false;
+                }
+            }
+        }
+
+        private void MenuSaveFile_Click(object sender, RoutedEventArgs e)
+        {
+            string file = Fonction.SaveFile("save", ".json", "Text documents (.json)|*.json");
+            if (file != null)
+            {
+                Fonction.enregistrerTableauDansFichier(file);
+            }
         }
         #endregion
     }
