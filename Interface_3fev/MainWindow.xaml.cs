@@ -231,5 +231,12 @@ namespace Interface_3fev
             }
         }
         #endregion
+
+        private void dgUsers_CellEditEnding(object sender, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
+        {
+            Personne selectedObject = (Personne)dgUsers.SelectedItem;
+
+            Fonction.tblPersonnes[dgUsers.SelectedIndex] = selectedObject;
+        }
     }
 }
