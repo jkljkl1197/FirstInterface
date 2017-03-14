@@ -23,6 +23,8 @@ namespace Interface_3fev
             }
             else
             {
+                //Console.WriteLine("invalide");
+                System.Windows.MessageBox.Show("Caractere Invalide");
                 return null;
             }
         }
@@ -39,6 +41,7 @@ namespace Interface_3fev
             else
             {
                 //Console.WriteLine("invalide");
+                System.Windows.MessageBox.Show("Entier Invalide");
                 return null;
             }
         }
@@ -55,6 +58,7 @@ namespace Interface_3fev
             else
             {
                 //Console.WriteLine("invalide");
+                System.Windows.MessageBox.Show("Nombre réel Invalide");
                 return null;
             }
         }

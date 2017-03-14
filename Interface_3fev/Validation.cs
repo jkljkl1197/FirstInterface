@@ -49,7 +49,7 @@ namespace Interface_3fev
             }
             else
             {
-                telephone = "0";
+                telephone = null;
                 //Console.WriteLine("Verifier le format");
             }
             return telephone;
@@ -57,13 +57,17 @@ namespace Interface_3fev
 
         public static string dateValide(string jour, string mois, string annee, int minAns = 1000, int maxAns = 3000, int valid = 1)
         {
-            string date;
+            string date = null;
             int panne = 0;
+            int? error = null;
+
             if (int.TryParse(jour + mois + annee, out panne))
             {
                 if (int.Parse(annee) >= minAns && int.Parse(annee) <= maxAns)
                 {
-                    string[] formats = { "dd/MM/yyyy" };
+                    string[] formats = {
+                        "dd/MM/yyyy"
+                    };
                     DateTime parsedTime;
                     if (valid == 0)
                     {
@@ -72,15 +76,12 @@ namespace Interface_3fev
                             date = Convert.ToString(parsedTime);
                             return date;
                         }
-                        else
-                        {
-                            date = "0";
-                            //Console.WriteLine("Verifier le format");
-                        }
+                        else { error = 0; }
+
                     }
                     if (valid == 1)
                     {
-                        //Verification de la date ulterieur a la date actuel
+                        //Verification que la date est ultérieur a la date actuel
 
                         if (DateTime.TryParseExact(jour + "/" + mois + "/" + annee, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedTime))
                         {
@@ -90,16 +91,12 @@ namespace Interface_3fev
                                 date = Convert.ToString(parsedTime);
                                 return date;
                             }
-                            else
-                            {
-                                date = "0";
-                                //Console.WriteLine("Merci d'entrée une date ulterieur");
-                            }
+                            else { error = 1; }
                         }
                     }
                     if (valid == 2)
                     {
-                        //Verification de la date ulterieur a la date actuel
+                        //Verification que la date est superieur a la date actuel
 
                         if (DateTime.TryParseExact(jour + "/" + mois + "/" + annee, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedTime))
                         {
@@ -109,26 +106,41 @@ namespace Interface_3fev
                                 date = Convert.ToString(parsedTime);
                                 return date;
                             }
-                            else
-                            {
-                                date = "0";
-                                //Console.WriteLine("Merci d'entrée une date ulterieur");
-                            }
+                            else { error = 2; }
                         }
                     }
                 }
-                else
-                {
-                    date = "0";
-                    //Console.WriteLine("année invalide");
-                }
+                else { error = 3; }
             }
-            else
+            else { error = 0; }
+
+            switch(error)
             {
-                date = "0";
-                //Console.WriteLine("Verifier le format");
+                case 0:
+                    {
+                        System.Windows.MessageBox.Show("Verifier le format");
+                        return date;
+                    }
+                case 1:
+                    {
+                        System.Windows.MessageBox.Show("Merci d'entrée une date ulterieur a la date actuel");
+                        return date;
+                    }
+                case 2:
+                    {
+                        System.Windows.MessageBox.Show("Merci d'entrée une date superieur a la date actuel");
+                        return date;
+                    }
+                case 3:
+                    {
+                        System.Windows.MessageBox.Show("Année invalide");
+                        return date;
+                    }
+                default:
+                    {
+                        return date;
+                    }
             }
-            return "0";
         }
     }
 }

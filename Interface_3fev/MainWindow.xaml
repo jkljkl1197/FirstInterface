@@ -144,7 +144,7 @@
 
         <TextBlock HorizontalAlignment="Left" Margin="10,5,0,0" TextWrapping="Wrap" Text="Éditeur de Liste" VerticalAlignment="Top" Width="224" Foreground="#FFD85252" Height="16"/>
         <!--<ListBox x:Name="listBox" Margin="10" Background="#FFBDC3C7" Grid.Row="1"/>-->
-        <DataGrid x:Name="dgUsers" Margin="10" Grid.Row="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" CellEditEnding="dgUsers_CellEditEnding" />
+        <DataGrid x:Name="dgUsers" Margin="10" Grid.Row="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" CellEditEnding="dgUsers_CellEditEnding" PreviewKeyDown="dgUsers_PreviewKeyDown" />
 
         <!--<Canvas x:Name="canvas">-->
         <TextBlock x:Name="labelDebug" TextWrapping="Wrap" Text="Visualisation/Edition" Foreground="#FFD84B51" Grid.Column="1" Margin="5,5,0,0" HorizontalAlignment="Left" Width="177" Visibility="Hidden"/>
