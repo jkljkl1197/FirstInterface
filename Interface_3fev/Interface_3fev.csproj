@@ -77,6 +77,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Parent\Employe.cs" />
+    <Compile Include="Parent\EnfantEmployer\Directeur.cs" />
+    <Compile Include="Parent\EnfantEmployer\Programmeur.cs" />
+    <Compile Include="Parent\EnfantEmployer\Secretaire.cs" />
+    <Compile Include="Parent\EnfantEtudiant\Cegepien.cs" />
+    <Compile Include="Parent\EnfantEtudiant\Universitaire.cs" />
+    <Compile Include="Parent\Etudiant.cs" />
     <Compile Include="Validation.cs" />
     <Compile Include="ValidType.cs" />
     <Page Include="About.xaml">

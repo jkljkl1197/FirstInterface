@@ -8,7 +8,7 @@
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d" x:Class="Interface_3fev.MainWindow"
         ResizeMode="CanResizeWithGrip"
-        Title="Lister" Height="575" MinHeight="350" Width="1090" MinWidth="515"
+        Title="Lister" Height="350" MinHeight="350" Width="400" MinWidth="515"
         Icon="Program-icon.ico">
     <Window.Resources>
         <Style x:Key="MyButtonStyle" TargetType="Button">
@@ -137,17 +137,12 @@
             <RowDefinition Height="21"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="257*"/>
-            <ColumnDefinition Width="258*"/>
-        </Grid.ColumnDefinitions>
 
         <TextBlock HorizontalAlignment="Left" Margin="10,5,0,0" TextWrapping="Wrap" Text="Éditeur de Liste" VerticalAlignment="Top" Width="224" Foreground="#FFD85252" Height="16"/>
         <!--<ListBox x:Name="listBox" Margin="10" Background="#FFBDC3C7" Grid.Row="1"/>-->
         <DataGrid x:Name="dgUsers" Margin="10" Grid.Row="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" CellEditEnding="dgUsers_CellEditEnding" PreviewKeyDown="dgUsers_PreviewKeyDown" />
 
         <!--<Canvas x:Name="canvas">-->
-        <TextBlock x:Name="labelDebug" TextWrapping="Wrap" Text="Visualisation/Edition" Foreground="#FFD84B51" Grid.Column="1" Margin="5,5,0,0" HorizontalAlignment="Left" Width="177" Visibility="Hidden"/>
         <Button x:Name="buttomExit" Style="{StaticResource Quitter}" Content="X" Click="Button_Quit_Click" ToolTip="Quitter" Background="#FFE74C3C" HorizontalAlignment="Right" MinHeight="21" MaxHeight="21" MaxWidth="60" Width="38" Grid.Column="1"/>
         <Button x:Name="buttomMinimise" Style="{StaticResource Minimise}" Content="_" Click="Button_Minimise" ToolTip="Minimiser" Background="#3498db" HorizontalAlignment="Right" MinHeight="21" MaxHeight="21" MaxWidth="60" Width="38" Margin="0,0,38,0" Grid.Column="1"/>
         <Button x:Name="buttomSettings" Style="{StaticResource Settings}" Click="Button_Settings" ToolTip="A propos" Background="#95a5a6" HorizontalAlignment="Right" MinHeight="21" MaxHeight="21" MaxWidth="60" Width="38" Margin="0,0,76,0" Grid.Column="1" Height="21" VerticalAlignment="Top">
@@ -155,46 +150,5 @@
                 <Image Source="settings.png" Stretch="Uniform" Height="20"></Image>
             </StackPanel>
         </Button>
-
-        <Grid x:Name="Grid2"  Grid.Column="1" Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="104*"/>
-                <ColumnDefinition Width="25*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition x:Name="RemoveGrid" Height="13*"/>
-                <RowDefinition Height="53"/>
-                <RowDefinition Height="6*"/>
-            </Grid.RowDefinitions>
-            <TextBox x:Name="texteboxDebug" Margin="10,10,10,0" TextWrapping="Wrap" Foreground="#FF0F0F0F" Background="#FFBDC3C7" Visibility="Hidden" Grid.ColumnSpan="2"/>
-            <Grid Grid.Row="1" Margin="0,45,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="86*"/>
-                    <ColumnDefinition Width="86*"/>
-                    <ColumnDefinition Width="86*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="58*"/>
-                    <RowDefinition Height="58*"/>
-                    <RowDefinition Height="5"/>
-                </Grid.RowDefinitions>
-                <Button x:Name="Lire_Fichier" Style="{StaticResource MyButtonStyle}" Content="Lire Fichier" Margin="10,10,10,1" Click="Button_LireFichier_click" ToolTip="Remplace le contenue de la liste par celui du fichier json." Background="#2ecc71" BorderBrush="#FF27AE60" MinHeight="22" Grid.Column="0" />
-                <Button x:Name="Enlever" Style="{StaticResource MyButtonStyle}" Content="Enlever" Margin="10,10,10,1" Click="Button_Enlever_click" ToolTip="Supprime la ligne selectionner dans la liste." Background="#2ecc71" BorderBrush="#FF27AE60" MinHeight="22" Grid.Column="1" />
-                <Button x:Name="Debug" Style="{StaticResource MyButtonStyle}" Content="Debug" Margin="10,10,10,1" Click="Button_Debug_click" ToolTip="Permet de visualiser le contenue du tableau." Background="#2ecc71" BorderBrush="#FF27AE60" MinHeight="22" Grid.Column="2" />
-
-                <Button x:Name="Refresh" Style="{StaticResource MyButtonStyle}" Content="Recharger" Margin="10,5,10,8" Click="Button_Refresh_click" ToolTip="Rafraichie le contenue de la liste." Background="#2ecc71" BorderBrush="#FF27AE60" MinHeight="22" Grid.Row="1"/>
-                <Button x:Name="Ajouter" Style="{StaticResource MyButtonStyle}" Content="Ajouter" Margin="10,4,10,8" Click="Button_Ajouter_click" ToolTip="Ajoute une ligne dans la liste." Background="#2ecc71" BorderBrush="#FF27AE60" MinHeight="22" Grid.Column="1" Grid.Row="1"/>
-                <Button x:Name="Enregistrer" Style="{StaticResource MyButtonStyle}" Content="Enregistrer" Margin="10,5,10,8" Click="Button_Enregistrer_Click" ToolTip="Enregistre le contenue de la liste dans un fichier texte." Background="#2ecc71" BorderBrush="#FF27AE60" MinHeight="22" Grid.Column="2" Grid.Row="1" />
-            </Grid>
-            <RadioButton x:Name="Ascendant" Content="Ascendant" Margin="10,10,0,26" Checked="Ascendant_Checked" Foreground="White" ToolTip="Met en ordre croissant la liste." Grid.Row="1" HorizontalAlignment="Left" Width="100"/>
-            <RadioButton x:Name="Descendant" Content="Descendant" HorizontalAlignment="Left" Margin="10,31,0,5" Checked="Descendant_Checked" Foreground="White" ToolTip="Met en ordre decroissant la liste." Width="100" Grid.Row="1"/>
-            <!--<Button x:Name="buttomTxt2Json" Style="{DynamicResource MyButtonStyle}" Content="Convertir Txt en Json" Margin="0,4,10,26" Background="#2ecc71" BorderBrush="#FF27AE60" MinHeight="22" MaxHeight="22" Grid.Row="1" HorizontalAlignment="Right" Width="130" ToolTip="charge un fichier separer avec des espaces et le converti en Json au format aproprier pour ce programme et le save." Visibility="Hidden" Grid.ColumnSpan="2"/>-->
-            <Button x:Name="buttomDebugSaveLoad" Style="{StaticResource MyButtonStyle}" Content="Enregistrer/Recharger" Margin="0,30,10,0" Click="Button_DebugSaveLoad_Click" Background="#2ecc71" BorderBrush="#FF27AE60" MinHeight="22" MaxHeight="22" Grid.Row="1" HorizontalAlignment="Right" Width="130" Visibility="Hidden" Grid.ColumnSpan="2"/>
-            <CheckBox x:Name="CheckBoxSaveOnExit" Content="Enregistrer avant de Quitter" Foreground="White" HorizontalAlignment="Left" Margin="110,31,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        </Grid>
-        <Menu IsMainMenu="True" HorizontalAlignment="Right" Height="21" Margin="0,3,5,0" VerticalAlignment="Top" Width="156" Background="Transparent" Grid.RowSpan="2">
-            <MenuItem x:Name="MenuOpenFile" Header="_Ouvrir" Foreground="White" Click="MenuOpenFile_Click"/>
-            <MenuItem x:Name="MenuSaveFile" Header="_Enregistrer-sous" Foreground="White" Click="MenuSaveFile_Click"/>
-        </Menu>
     </Grid>
 </Window>

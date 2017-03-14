@@ -1,7 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.IO;
+using System;
+using System.Collections.Generic;
+
 
 namespace Interface_3fev
 {
@@ -15,8 +17,39 @@ namespace Interface_3fev
         {
             InitializeComponent();
 
+            System.Windows.Controls.DataGridTextColumn c1 = new System.Windows.Controls.DataGridTextColumn();
+            c1.Header = "Nom";
+            c1.Binding = new System.Windows.Data.Binding("Nom");
+            c1.Width = 110;
+            dgUsers.Columns.Add(c1);
+            System.Windows.Controls.DataGridTextColumn c2 = new System.Windows.Controls.DataGridTextColumn();
+            c2.Header = "SalaireBase";
+            c2.Width = 110;
+            c2.Binding = new System.Windows.Data.Binding("SalaireBase");
+            dgUsers.Columns.Add(c2);
+            System.Windows.Controls.DataGridTextColumn c3 = new System.Windows.Controls.DataGridTextColumn();
+            c3.Header = "DateEmbauche";
+            c3.Width = 110;
+            c3.Binding = new System.Windows.Data.Binding("DateEmbauche");
+            dgUsers.Columns.Add(c3);
+
+            Fonction.tblEmploye[0] = new Parent.Employe("test1", 10, "le 10");
+            Fonction.tblEmploye[1] = new Parent.Employe("test2", 10, "le 10");
+            Fonction.tblEmploye[2] = new Parent.Employe("test3", 10, "le 10");
+            Fonction.tblEmploye[3] = new Parent.Employe("test4", 10, "le 10");
+            Fonction.tblEmploye[4] = new Parent.Employe("test5", 10, "le 10");
+
+            foreach(Parent.Employe E in Fonction.tblEmploye)
+            {
+                if (E != null)
+                {
+                    dgUsers.Items.Add(new { Nom = E.Nom, SalaireBase = E.SalaireBase, DateEmbauche = E.DateEmbauche });
+                }
+            }
+
+            //dgUsers.ItemsSource = Fonction.tblEmploye;
             Fonction.lireFichier();
-            transfererTableauDansListBox();
+            //transfererTableauDansListBox();
 
         }
 
@@ -30,16 +63,16 @@ namespace Interface_3fev
                 {
                     Fonction.lireFichier(file);
                     transfererTableauDansListBox();
-                    Ascendant.IsChecked = false;
-                    Descendant.IsChecked = false;
+                    //Ascendant.IsChecked = false;
+                    //Descendant.IsChecked = false;
                 }
                 else if (file.Contains(".txt"))
                 {
                     Fonction.refreshTbl2Null();
                     Fonction.ConvertTxtToJson(file);
                     transfererTableauDansListBox();
-                    Ascendant.IsChecked = false;
-                    Descendant.IsChecked = false;
+                    //Ascendant.IsChecked = false;
+                    //Descendant.IsChecked = false;
                 }
             }
         }
@@ -58,7 +91,7 @@ namespace Interface_3fev
         public void transfererTableauDansListBox()
         {
             Fonction.Cpt = 0;
-            foreach (Personne P in Fonction.tblPersonnes)
+            foreach (Personne P in Fonction.tblEmploye)
             {
                 if (P != null)
                     Fonction.Cpt++;
@@ -67,9 +100,9 @@ namespace Interface_3fev
             Personne[] tblTemp = new Personne[Fonction.Cpt];
             for (int i = 0; i < Fonction.Cpt; i++)
             {
-                if (Fonction.tblPersonnes[i] != null)
+                if (Fonction.tblEmploye[i] != null)
                 {
-                    tblTemp[i] = Fonction.tblPersonnes[i];
+                    tblTemp[i] = Fonction.tblEmploye[i];
                 }
             }
             dgUsers.ItemsSource = tblTemp;
@@ -77,8 +110,8 @@ namespace Interface_3fev
 
         private void dgUsers_CellEditEnding(object sender, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
         {
-            Personne selectedObject = (Personne)dgUsers.SelectedItem;
-            Fonction.tblPersonnes[dgUsers.SelectedIndex] = selectedObject;
+            Parent.Employe selectedObject = (Parent.Employe)dgUsers.SelectedItem;
+            Fonction.tblEmploye[dgUsers.SelectedIndex] = selectedObject;
         }
 
         private void dgUsers_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -91,20 +124,20 @@ namespace Interface_3fev
 
         private void Refresh_texteboxDebug()
         {
-            texteboxDebug.Text = File.ReadAllText(@"..\save.json");
+            //texteboxDebug.Text = File.ReadAllText(@"..\save.json");
         }
 
         private void Write_texteboxDebug()
         {
-            System.IO.File.WriteAllText(@"..\save.json", texteboxDebug.Text);
+            //System.IO.File.WriteAllText(@"..\save.json", texteboxDebug.Text);
         }
 
         private void Ascendant_Checked(object sender, RoutedEventArgs e)
         {
             char Order = 'A';
             Fonction.trierTableau(Order);
-            Ascendant.IsChecked = true;
-            Descendant.IsChecked = false;
+            //Ascendant.IsChecked = true;
+            //Descendant.IsChecked = false;
             transfererTableauDansListBox();
         }
 
@@ -112,8 +145,8 @@ namespace Interface_3fev
         {
             char Order = 'D';
             Fonction.trierTableau(Order);
-            Ascendant.IsChecked = false;
-            Descendant.IsChecked = true;
+            //Ascendant.IsChecked = false;
+            //Descendant.IsChecked = true;
             transfererTableauDansListBox();
         }
         # endregion
@@ -121,10 +154,10 @@ namespace Interface_3fev
         # region EssentialButton
         private void Button_Quit_Click(object sender, RoutedEventArgs e)
         {
-            if (CheckBoxSaveOnExit.IsChecked == true)
+            /*if (CheckBoxSaveOnExit.IsChecked == true)
             {
                 Fonction.enregistrerTableauDansFichier();
-            }
+            }*/
             Application.Current.Shutdown();
         }
 
@@ -161,8 +194,8 @@ namespace Interface_3fev
             Fonction.refreshTbl2Null();
             Fonction.lireFichier();
             transfererTableauDansListBox();
-            Ascendant.IsChecked = false;
-            Descendant.IsChecked = false;
+            //Ascendant.IsChecked = false;
+            //Descendant.IsChecked = false;
         }
         # endregion
 
@@ -172,8 +205,8 @@ namespace Interface_3fev
             Fonction.refreshTbl2Null();
             Fonction.lireFichier();
             transfererTableauDansListBox();
-            Ascendant.IsChecked = false;
-            Descendant.IsChecked = false;
+            //Ascendant.IsChecked = false;
+            //Descendant.IsChecked = false;
         }
 
         private void Button_Enlever_click(object sender, RoutedEventArgs e)
@@ -191,8 +224,8 @@ namespace Interface_3fev
 
             for (int i = select; i < Fonction.Cpt; i++)
             {
-                Fonction.tblPersonnes[i] = Fonction.tblPersonnes[i + 1];
-                Fonction.tblPersonnes[i + 1] = null;
+                Fonction.tblEmploye[i] = Fonction.tblEmploye[i + 1];
+                Fonction.tblEmploye[i + 1] = null;
             }
             Fonction.Cpt = Fonction.Cpt - 1;
             transfererTableauDansListBox();
@@ -204,18 +237,18 @@ namespace Interface_3fev
             Refresh_texteboxDebug();
             if (visible == false)
             {
-                texteboxDebug.Visibility = Visibility.Visible;
+                //texteboxDebug.Visibility = Visibility.Visible;
                 //buttomTxt2Json.Visibility = Visibility.Visible;
-                labelDebug.Visibility = Visibility.Visible;
-                buttomDebugSaveLoad.Visibility = Visibility.Visible;
+                //labelDebug.Visibility = Visibility.Visible;
+                //buttomDebugSaveLoad.Visibility = Visibility.Visible;
                 visible = true;
             }
             else
             {
-                texteboxDebug.Visibility = Visibility.Hidden;
+                //texteboxDebug.Visibility = Visibility.Hidden;
                 //buttomTxt2Json.Visibility = Visibility.Hidden;
-                labelDebug.Visibility = Visibility.Hidden;
-                buttomDebugSaveLoad.Visibility = Visibility.Hidden;
+                //labelDebug.Visibility = Visibility.Hidden;
+                //buttomDebugSaveLoad.Visibility = Visibility.Hidden;
                 visible = false;
             }
         }
@@ -231,7 +264,7 @@ namespace Interface_3fev
             int cptTemp = Fonction.Cpt + 1;
             if (cptTemp < 50 - 1)
             {
-                Ajouter subWindow = new Ajouter();
+                /*Ajouter subWindow = new Ajouter();
                 subWindow.ShowDialog();
                 transfererTableauDansListBox();
                 if (Ascendant.IsChecked == true)
@@ -242,7 +275,7 @@ namespace Interface_3fev
                 {
                     Fonction.trierTableau('D');
                 }
-                transfererTableauDansListBox();
+                transfererTableauDansListBox();*/
             }
             else
             {

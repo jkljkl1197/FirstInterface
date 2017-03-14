@@ -28,7 +28,7 @@ namespace Interface_3fev {
             bool lastError = false;
             string message = "";
 
-            string nas = TextBoxNas.Text;
+            /*string nas = TextBoxNas.Text;
             string nom = TextBoxNom.Text;
             string prenom = TextBoxPrenom.Text;
             double ? depense = ValidType.doubleValide(TextBoxDepense.Text);
@@ -116,10 +116,10 @@ namespace Interface_3fev {
             while (error == true);
 
             if (lastError == false) {
-                Fonction.tblPersonnes[cpt1] = new Personne(nas, nom, prenom, dateDeNaissance, depense, statusEnum, sexeEnum);
+                Fonction.tblEmploye[cpt1] = new Personne(nas, nom, prenom, dateDeNaissance, depense, statusEnum, sexeEnum);
                 cpt1++;
                 this.Close();
-            }
+            }*/
         }
 
         private void buttonAnnuler_click(object sender, RoutedEventArgs e) {

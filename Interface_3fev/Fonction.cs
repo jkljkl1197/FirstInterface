@@ -11,14 +11,14 @@ using System.Globalization;
 
 namespace Interface_3fev {
     class Fonction {
-        public static Personne[] tblPersonnes = new Personne[50];
+        public static Parent.Employe[] tblEmploye = new Parent.Employe[50];
         public static int Cpt = 0;
 
         # region Read/Write; SelectFile
         public static string lireFichier(string SelectedFile = @"..\save.json") // lecture du fichier et remisage dans le tableau tab et compte dans cpt
         {
             string texte = "";
-            try {
+            /*try {
                 JArray jArray = JArray.Parse(File.ReadAllText(SelectedFile));
 
                 for (int i = 0; i < jArray.ToArray().Length; i++) {
@@ -53,16 +53,16 @@ namespace Interface_3fev {
 
                     if (nom != null && prenom != null) {
                         if (nas != null && dateDeNaissance != null && status != null && sexe != null) {
-                            Fonction.tblPersonnes[i] = new Personne(nas, nom, prenom, dateDeNaissance, depense, statusEnum, sexeEnum);
+                            Fonction.tblEmploye[i] = new Personne(nas, nom, prenom, dateDeNaissance, depense, statusEnum, sexeEnum);
                         } else {
-                            Fonction.tblPersonnes[i] = new Personne(nom, prenom, depense);
+                            Fonction.tblEmploye[i] = new Personne(nom, prenom, depense);
                         }
                     }
                     Cpt++;
                 }
             } catch {
 
-            }
+            }*/
             return texte;
         }
 
@@ -123,7 +123,7 @@ namespace Interface_3fev {
             Personne[] tblPersonnesTemp = new Personne[50];
             int CptTemp = 0;
 
-            try {
+            /*try {
                 StreamReader sr = new StreamReader(SelectedFile);
                 string line = sr.ReadLine();
                 while (line != null) {
@@ -159,17 +159,17 @@ namespace Interface_3fev {
                         System.Windows.MessageBox.Show("Il y a plus de 50 ligne dans le fichier [Limite du tableau depasser].");
                     }
 
-                    tblPersonnes = tblPersonnesTemp;
+                    tblEmploye = tblPersonnesTemp;
                 }
                 sr.Close();
             } catch {
 
-            }
+            }*/
         }
 
         public static string getJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(tblPersonnes, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(tblEmploye, Newtonsoft.Json.Formatting.Indented);
         }
         # endregion
 
@@ -180,13 +180,14 @@ namespace Interface_3fev {
                 tableauEnOrdre = true;
 
                 for (int i = 0; i < Cpt - 1; i++)
-                    if (tblPersonnes[i].Nom.CompareTo(tblPersonnes[i + 1].Nom) > 0 && AscDesc == 'A' ||
-                        tblPersonnes[i].Nom.CompareTo(tblPersonnes[i + 1].Nom) < 0 && AscDesc == 'D') {
+                    if (tblEmploye[i].Nom.CompareTo(tblEmploye[i + 1].Nom) > 0 && AscDesc == 'A' ||
+                        tblEmploye[i].Nom.CompareTo(tblEmploye[i + 1].Nom) < 0 && AscDesc == 'D')
+                    {
 
-                        Personne temp = tblPersonnes[i];
+                        Parent.Employe temp = tblEmploye[i];
 
-                        tblPersonnes[i] = tblPersonnes[i + 1];
-                        tblPersonnes[i + 1] = temp;
+                        tblEmploye[i] = tblEmploye[i + 1];
+                        tblEmploye[i + 1] = temp;
 
                         tableauEnOrdre = false;
                     }
@@ -196,9 +197,9 @@ namespace Interface_3fev {
 
         public static void refreshTbl2Null()
         {
-            for (int i = 0; i < tblPersonnes.Length; i++)
+            for (int i = 0; i < tblEmploye.Length; i++)
             {
-                tblPersonnes[i] = null;
+                tblEmploye[i] = null;
             }
         }
         # endregion
