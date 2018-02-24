@@ -4,9 +4,9 @@ C# programe to store Name, First Name, Depense in a object table. Resizable wind
 -----------------
 
 <h2>On start</h2>
-![alt tag](https://puu.sh/u87sJ/c40780cda7.png)
+![alt tag](https://puu.sh/zukJx/23bdf8a9b8.png)
 <h2>After Debug Button is Clicked</h2>
-![alt tag](https://puu.sh/u87PH/f4ade5178f.png)
+![alt tag](https://puu.sh/zulHY/d0885cf975.png)
 
 -----------------
 Features
